@@ -2,7 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:gravity="center"
     android:orientation="vertical"
     android:background="@color/background">
@@ -10,19 +9,18 @@
     <com.google.android.material.button.MaterialButton
         style="@style/mainScreenButton"
         android:id="@+id/to_first_task"
-        android:text="Task 1"
+        android:text="@string/to_first_task_label"
         android:layout_marginBottom="20dp"/>
 
     <com.google.android.material.button.MaterialButton
         style="@style/mainScreenButton"
         android:id="@+id/toast_button"
-        android:text="Task 2"/>
+        android:text="@string/to_second_task_label"/>
 
     <com.google.android.material.button.MaterialButton
         style="@style/mainScreenButton"
         android:id="@+id/log_button"
         android:layout_marginTop="20dp"
-        android:text="Task 3"/>
-
+        android:text="@string/to_third_task_label"/>
 
 </LinearLayout>
