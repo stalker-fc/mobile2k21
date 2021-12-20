@@ -11,6 +11,13 @@
         <item name="android:textAllCaps">false</item>item
     </style>
 
+    <style name="firstTaskButton" parent="@style/mainScreenButton">
+        <item name="android:layout_width">100dp</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:layout_gravity">left</item>
+    </style>
+
+
     <style name="Theme.Mobile2k21.NoActionBar">
         <item name="android:windowActionBar">false</item>
         <item name="android:windowNoTitle">true</item>

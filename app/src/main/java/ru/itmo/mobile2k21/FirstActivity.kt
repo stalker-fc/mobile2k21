@@ -23,13 +23,13 @@ class FirstActivity : AppCompatActivity() {
             Log.i("FirstActivity", "Problems")
         }
 
-        val coloredLabel: TextView = findViewById(R.id.colored_label)
-        val changeLabelColorSwitch: Switch = findViewById(R.id.change_label_color_switch)
+        val coloredLabel: TextView = findViewById(R.id.first_task__text)
+        val changeLabelColorSwitch: Switch = findViewById(R.id.first_task__change_text_color)
         changeLabelColorSwitch.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
-                coloredLabel.setTextColor(Color.RED)
+                coloredLabel.setTextColor(R.color.light_grey.toInt())
             } else {
-                coloredLabel.setTextColor(Color.BLUE)
+                coloredLabel.setTextColor(R.color.dark_grey.toInt())
             }
         }
 
