@@ -10,15 +10,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Mobile2k21">
         <activity
+            android:name=".DetailScreenActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
-            android:theme="@style/Theme.Mobile2k21.NoActionBar"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/Theme.Mobile2k21.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".FirstActivity"
+        <activity
+            android:name=".FirstActivity"
             android:exported="true" />
     </application>
 

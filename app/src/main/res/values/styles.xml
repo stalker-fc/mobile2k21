@@ -17,6 +17,8 @@
         <item name="android:layout_gravity">left</item>
     </style>
 
+    <style name="detailScreenButton" parent="@style/firstTaskButton">
+    </style>
 
     <style name="Theme.Mobile2k21.NoActionBar">
         <item name="android:windowActionBar">false</item>

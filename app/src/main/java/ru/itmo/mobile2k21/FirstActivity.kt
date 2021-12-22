@@ -1,5 +1,7 @@
 package ru.itmo.mobile2k21
+
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -33,7 +35,10 @@ class FirstActivity : AppCompatActivity() {
             }
         }
 
-
-        }
-
+        val toDetailScreenActivity: Button = findViewById(R.id.to_detail_screen)
+        toDetailScreenActivity.setOnClickListener(View.OnClickListener { view ->
+            val intent = Intent(this@FirstActivity, DetailScreenActivity::class.java)
+            startActivity(intent)
+        })
     }
+}

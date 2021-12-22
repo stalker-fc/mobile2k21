@@ -91,6 +91,7 @@
 
                 <Button
                     style="@style/firstTaskButton"
+                    android:id="@+id/to_detail_screen"
                     android:text="Hide List"></Button>
 
                 <Button
