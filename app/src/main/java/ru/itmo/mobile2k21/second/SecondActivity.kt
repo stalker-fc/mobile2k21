@@ -1,7 +1,6 @@
 package ru.itmo.mobile2k21.second
 
 import android.os.Bundle
-import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
