@@ -1,32 +1,15 @@
 package ru.itmo.mobile2k21.second
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
-import android.os.HandlerThread
-import android.os.Looper
-import android.util.Log
 import android.view.View
 import android.widget.Button
-import android.widget.Switch
 import android.widget.TextView
-import android.widget.Toast
-import androidx.core.content.ContextCompat
+import androidx.appcompat.app.AppCompatActivity
 import ru.itmo.mobile2k21.R
-import java.util.concurrent.Executor
-import java.util.concurrent.Executors
-import java.util.concurrent.TimeUnit
-import java.util.concurrent.atomic.AtomicBoolean
-import java.util.concurrent.atomic.AtomicInteger
-import javax.xml.parsers.FactoryConfigurationError
+
 
 class SecondActivity : AppCompatActivity() {
-    private lateinit var firstCounter: Counter
-    private lateinit var secondCounter: Counter
-    private var firstCounterDelayMs: Long = 600
-    private var secondCounterDelayMs: Long = 400
-
+    private lateinit var counters: List<Counter>
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -34,60 +17,63 @@ class SecondActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_second)
 
-
         val firstCounterLabel: TextView = findViewById(R.id.first_counter)
-        val secondCounterLabel: TextView = findViewById(R.id.second_counter)
-
-        firstCounter = Counter(
+        val firstCounterDelayMs: Long = 600
+        val firstCounter = Counter(
             firstCounterLabel,
             firstCounterDelayMs
         )
 
-        secondCounter = Counter(
+        val secondCounterLabel: TextView = findViewById(R.id.second_counter)
+        val secondCounterDelayMs: Long = 400
+        val secondCounter = Counter(
             secondCounterLabel,
             secondCounterDelayMs
         )
 
+        counters = mutableListOf(firstCounter, secondCounter)
+
+
         val countersStart: Button = findViewById(R.id.counters_start)
-        countersStart.isEnabled = true;
+        enableButton(countersStart)
 
         val countersStop: Button = findViewById(R.id.counters_stop)
-        countersStop.isEnabled = false;
+        disableButton(countersStop)
 
         val countersReset: Button = findViewById(R.id.counters_reset)
-        countersReset.isEnabled = false;
+        disableButton(countersReset)
 
-        countersStart.setOnClickListener(View.OnClickListener { view ->
-            firstCounter.start()
-            secondCounter.start()
-            countersStart.isEnabled = false;
-            countersStop.isEnabled = true;
-            countersReset.isEnabled = true;
-            countersStart.setTextAppearance(R.style.secondTaskButton_disabled)
-            countersStop.setTextAppearance(R.style.secondTaskButton)
-            countersReset.setTextAppearance(R.style.secondTaskButton)
-        })
+        countersStart.setOnClickListener {
+            for (counter in counters) counter.start()
+            disableButton(countersStart)
+            enableButton(countersStop)
+            enableButton(countersReset)
+        }
 
-        countersStop.setOnClickListener(View.OnClickListener { view ->
-            firstCounter.stop()
-            secondCounter.stop()
-            countersStart.isEnabled = true;
-            countersStop.isEnabled = false;
-            countersReset.isEnabled = true;
-            countersStart.setTextAppearance(R.style.secondTaskButton)
-            countersStop.setTextAppearance(R.style.secondTaskButton_disabled)
-            countersReset.setTextAppearance(R.style.secondTaskButton)
-        })
+        countersStop.setOnClickListener {
+            for (counter in counters) counter.stop()
+            enableButton(countersStart)
+            disableButton(countersStop)
+            enableButton(countersReset)
+        }
 
-        countersReset.setOnClickListener(View.OnClickListener { view ->
-            firstCounter.reset()
-            secondCounter.reset()
-        })
+        countersReset.setOnClickListener {
+            for (counter in counters) counter.reset()
+        }
     }
 
     override fun onPause() {
         super.onPause()
-        firstCounter.stop()
-        secondCounter.stop()
+        for (counter in counters) counter.reset()
+    }
+
+    private fun enableButton(button: Button) {
+        button.isEnabled = true;
+        button.setTextAppearance(R.style.secondTaskButton)
+    }
+
+    private fun disableButton(button: Button) {
+        button.isEnabled = false;
+        button.setTextAppearance(R.style.secondTaskButton_disabled)
     }
 }
