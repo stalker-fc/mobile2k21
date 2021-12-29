@@ -4,7 +4,7 @@
         <item name="android:layout_height">50dp</item>
         <item name="android:layout_gravity">center</item>
         <item name="android:textColor">@color/dark_grey</item>
-        <item name="backgroundTint">@color/light_grey</item>
+        <item name="backgroundTint">#FFFFFF</item>
         <item name="cornerRadius">10dp</item>
         <item name="strokeColor">@color/dark_grey</item>
         <item name="strokeWidth">1dp</item>
@@ -19,6 +19,16 @@
 
     <style name="detailScreenButton" parent="@style/firstTaskButton">
     </style>
+
+    <style name="secondTaskButton" parent="@style/firstTaskButton">
+        <item name="android:layout_gravity">center_horizontal</item>
+    </style>
+    
+    <style name="secondTaskButton.disabled" parent="@style/secondTaskButton">
+        <item name="android:textColor">@color/light_grey</item>
+        <item name="strokeColor">@color/light_grey</item>
+    </style>
+
 
     <style name="Theme.Mobile2k21.NoActionBar">
         <item name="android:windowActionBar">false</item>

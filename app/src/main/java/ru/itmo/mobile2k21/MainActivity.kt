@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.Toast
 import ru.itmo.mobile2k21.first.FieldNames
 import ru.itmo.mobile2k21.first.FirstActivity
+import ru.itmo.mobile2k21.second.SecondActivity
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,11 +25,11 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         })
 
-        val toastButton: Button = findViewById(R.id.toast_button)
-        toastButton.setOnClickListener(View.OnClickListener { view ->
-            Toast.makeText(this@MainActivity, "Its toast!", Toast.LENGTH_SHORT).show()
+        val toSecondTaskButton: Button = findViewById(R.id.to_second_task)
+        toSecondTaskButton.setOnClickListener(View.OnClickListener { view ->
+            val intent = Intent(this@MainActivity, SecondActivity::class.java)
+            startActivity(intent)
         })
-
         val logButton: Button = findViewById(R.id.log_button)
         logButton.setOnClickListener(View.OnClickListener { view ->
             Log.i("MainActivity", "Log-button works!")

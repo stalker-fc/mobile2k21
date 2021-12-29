@@ -25,6 +25,9 @@
         <activity
             android:name=".first.FirstActivity"
             android:exported="true" />
+        <activity
+            android:name=".second.SecondActivity"
+            android:exported="true" />
     </application>
 
 </manifest>

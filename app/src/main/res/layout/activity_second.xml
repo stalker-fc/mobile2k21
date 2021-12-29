@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/first_counter"
+            android:textSize="32dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="20dp"
+            android:gravity="center_horizontal"
+            android:text="0"
+            android:textColor="@color/dark_grey" />
+
+        <TextView
+            android:id="@+id/second_counter"
+            android:textSize="32dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="20dp"
+            android:gravity="center_horizontal"
+            android:text="0"
+            android:textColor="@color/dark_grey" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginTop="30dp"
+        >
+
+        <Button
+            style="@style/secondTaskButton"
+            android:id="@+id/threads_run"
+            android:text="Run" />
+
+        <Button
+            style="@style/secondTaskButton.disabled"
+            android:id="@+id/threads_stop"
+            android:text="Stop" />
+
+        <Button
+            style="@style/secondTaskButton.disabled"
+            android:id="@+id/threads_reset"
+            android:text="Reset" />
+    </LinearLayout>
+</LinearLayout>

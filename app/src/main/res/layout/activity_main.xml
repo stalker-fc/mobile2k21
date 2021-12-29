@@ -14,7 +14,7 @@
 
     <com.google.android.material.button.MaterialButton
         style="@style/mainScreenButton"
-        android:id="@+id/toast_button"
+        android:id="@+id/to_second_task"
         android:text="@string/to_second_task_label"/>
 
     <com.google.android.material.button.MaterialButton
