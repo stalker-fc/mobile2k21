@@ -45,17 +45,17 @@
 
         <Button
             style="@style/secondTaskButton"
-            android:id="@+id/threads_run"
-            android:text="Run" />
+            android:id="@+id/counters_start"
+            android:text="Start" />
 
         <Button
             style="@style/secondTaskButton.disabled"
-            android:id="@+id/threads_stop"
+            android:id="@+id/counters_stop"
             android:text="Stop" />
 
         <Button
             style="@style/secondTaskButton.disabled"
-            android:id="@+id/threads_reset"
+            android:id="@+id/counters_reset"
             android:text="Reset" />
     </LinearLayout>
 </LinearLayout>

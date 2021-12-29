@@ -22,6 +22,7 @@
 
     <style name="secondTaskButton" parent="@style/firstTaskButton">
         <item name="android:layout_gravity">center_horizontal</item>
+        <item name="strokeColor">@color/light_grey</item>
     </style>
     
     <style name="secondTaskButton.disabled" parent="@style/secondTaskButton">
