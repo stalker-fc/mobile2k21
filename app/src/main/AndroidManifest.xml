@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Mobile2k21">
         <activity
-            android:name=".DetailScreenActivity"
+            android:name=".first.DetailScreenActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
@@ -23,7 +23,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".FirstActivity"
+            android:name=".first.FirstActivity"
             android:exported="true" />
     </application>
 

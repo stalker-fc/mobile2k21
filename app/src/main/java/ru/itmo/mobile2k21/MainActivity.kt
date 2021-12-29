@@ -7,6 +7,8 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
+import ru.itmo.mobile2k21.first.FieldNames
+import ru.itmo.mobile2k21.first.FirstActivity
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

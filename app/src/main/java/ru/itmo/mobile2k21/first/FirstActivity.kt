@@ -1,8 +1,6 @@
-package ru.itmo.mobile2k21
+package ru.itmo.mobile2k21.first
 
-import android.annotation.SuppressLint
 import android.content.Intent
-import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -10,7 +8,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.Switch
 import android.widget.TextView
-import android.widget.Toast
+import ru.itmo.mobile2k21.R
 
 class FirstActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
