@@ -24,8 +24,8 @@ import javax.xml.parsers.FactoryConfigurationError
 class SecondActivity : AppCompatActivity() {
     private lateinit var firstCounter: Counter
     private lateinit var secondCounter: Counter
-    private var firstCounterDelayMs: Int = 600
-    private var secondCounterDelayMs: Int = 400
+    private var firstCounterDelayMs: Long = 600
+    private var secondCounterDelayMs: Long = 400
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,19 +34,16 @@ class SecondActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_second)
 
-        val mainExecutor: Executor = ContextCompat.getMainExecutor(this)
 
         val firstCounterLabel: TextView = findViewById(R.id.first_counter)
         val secondCounterLabel: TextView = findViewById(R.id.second_counter)
 
         firstCounter = Counter(
-            mainExecutor,
             firstCounterLabel,
             firstCounterDelayMs
         )
 
         secondCounter = Counter(
-            mainExecutor,
             secondCounterLabel,
             secondCounterDelayMs
         )
@@ -86,6 +83,11 @@ class SecondActivity : AppCompatActivity() {
             firstCounter.reset()
             secondCounter.reset()
         })
+    }
 
+    override fun onPause() {
+        super.onPause()
+        firstCounter.stop()
+        secondCounter.stop()
     }
 }
