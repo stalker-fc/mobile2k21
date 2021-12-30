@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal">
+    android:gravity="center"
+    android:orientation="horizontal"
+    tools:context=".second.CounterView">
 
     <TextView
         android:id="@+id/counter_label"
@@ -10,8 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_margin="20dp"
-        android:gravity="center_horizontal"
-        android:text="0"
+        android:text="@string/zero"
         android:textColor="@color/dark_grey"
         android:textSize="60dp" />
 
@@ -23,13 +26,13 @@
         <Button
             android:id="@+id/counter_speed_up"
             style="@style/speedButton"
-            android:text="▲"
+            android:text="@string/up_arrow"
             android:textSize="20dp" />
 
         <Button
             android:id="@+id/counter_slow_down"
             style="@style/speedButton"
-            android:text="▼"
+            android:text="@string/down_arrow"
             android:textSize="20dp" />
 
         <TextView

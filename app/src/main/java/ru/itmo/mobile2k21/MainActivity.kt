@@ -30,6 +30,7 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this@MainActivity, SecondActivity::class.java)
             startActivity(intent)
         })
+
         val logButton: Button = findViewById(R.id.log_button)
         logButton.setOnClickListener(View.OnClickListener {
             Log.i("MainActivity", "Log-button works!")

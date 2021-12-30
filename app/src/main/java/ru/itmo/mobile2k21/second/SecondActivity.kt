@@ -1,10 +1,9 @@
 package ru.itmo.mobile2k21.second
 
 import android.os.Bundle
-import android.widget.ArrayAdapter
 import android.widget.Button
-import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentManager
 import ru.itmo.mobile2k21.R
 
 
@@ -50,27 +49,24 @@ class SecondActivity : AppCompatActivity() {
     }
 
     private fun initCounters() {
+        val fragmentManager: FragmentManager = supportFragmentManager
         val changeIntervalDeltaMs: Long = 50
+
         val firstCounterDelayMs: Long = 600
         val firstCounterConfig = CounterConfig(
             firstCounterDelayMs,
             changeIntervalDeltaMs
         )
-        val firstCounterView = CounterView(firstCounterConfig)
+        val firstCounterView: CounterView = fragmentManager.findFragmentById(R.id.first_counter) as CounterView
 
         val secondCounterDelayMs: Long = 400
         val secondCounterConfig = CounterConfig(
             secondCounterDelayMs,
             changeIntervalDeltaMs
         )
-        val secondCounterView = CounterView(secondCounterConfig)
+        val secondCounterView: CounterView = fragmentManager.findFragmentById(R.id.second_counter) as CounterView
 
         counterViews = listOf(firstCounterView, secondCounterView)
-
-        val adapter = ArrayAdapter(this, R.layout.counter_item, counterViews)
-
-        val countersListView: ListView = findViewById(R.id.counters_listview)
-        countersListView.adapter = adapter
     }
 
 

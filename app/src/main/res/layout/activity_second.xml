@@ -4,36 +4,44 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <ListView
-        android:id="@+id/counters_listview"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight="65"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
-    </ListView>
 
+        <fragment
+            class="ru.itmo.mobile2k21.second.CounterView"
+            android:id="@+id/first_counter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <fragment
+            class="ru.itmo.mobile2k21.second.CounterView"
+            android:id="@+id/second_counter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:layout_weight="45"
         android:gravity="center"
         android:orientation="vertical">
 
         <Button
             android:id="@+id/counters_start"
             style="@style/secondTaskButton"
-            android:text="Start" />
+            android:text="@string/counters_start_text" />
 
         <Button
             android:id="@+id/counters_stop"
             style="@style/secondTaskButton"
-            android:text="Stop" />
+            android:text="@string/counters_stop_text" />
 
         <Button
             android:id="@+id/counters_reset"
             style="@style/secondTaskButton"
-            android:text="Reset" />
+            android:text="@string/counters_reset_text" />
     </LinearLayout>
 </LinearLayout>
