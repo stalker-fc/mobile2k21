@@ -21,13 +21,13 @@
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/speed_up"
+            android:id="@+id/counter_speed_up"
             style="@style/speedButton"
             android:text="▲"
             android:textSize="20dp" />
 
         <Button
-            android:id="@+id/slow_down"
+            android:id="@+id/counter_slow_down"
             style="@style/speedButton"
             android:text="▼"
             android:textSize="20dp" />
