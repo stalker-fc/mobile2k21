@@ -9,7 +9,7 @@ import ru.itmo.mobile2k21.R
 
 
 class SecondActivity : AppCompatActivity() {
-    private lateinit var counterPresenters: List<ICounterPresenter>
+    private lateinit var counterViews: List<ICounterView>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,21 +28,21 @@ class SecondActivity : AppCompatActivity() {
         disableButton(countersReset)
 
         countersStart.setOnClickListener {
-            for (counter in counterPresenters) counter.start()
+            for (counter in counterViews) counter.start()
             disableButton(countersStart)
             enableButton(countersStop)
             enableButton(countersReset)
         }
 
         countersStop.setOnClickListener {
-            for (counter in counterPresenters) counter.stop()
+            for (counter in counterViews) counter.stop()
             enableButton(countersStart)
             disableButton(countersStop)
             enableButton(countersReset)
         }
 
         countersReset.setOnClickListener {
-            for (counter in counterPresenters) counter.reset()
+            for (counter in counterViews) counter.reset()
             enableButton(countersStart)
             disableButton(countersStop)
             disableButton(countersReset)
@@ -65,8 +65,7 @@ class SecondActivity : AppCompatActivity() {
         )
         val secondCounterView = CounterView(secondCounterConfig)
 
-        val counterViews = listOf(firstCounterView, secondCounterView)
-        counterPresenters = listOf(firstCounterView.presenter, secondCounterView.presenter)
+        counterViews = listOf(firstCounterView, secondCounterView)
 
         val adapter = ArrayAdapter(this, R.layout.counter_item, counterViews)
 
@@ -77,7 +76,7 @@ class SecondActivity : AppCompatActivity() {
 
     override fun onPause() {
         super.onPause()
-        for (counter in counterPresenters) counter.reset()
+        for (counter in counterViews) counter.reset()
     }
 
     private fun enableButton(button: Button) {

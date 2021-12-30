@@ -34,7 +34,7 @@ class FirstActivity : AppCompatActivity() {
         }
 
         val toDetailScreenActivity: Button = findViewById(R.id.to_detail_screen)
-        toDetailScreenActivity.setOnClickListener(View.OnClickListener { view ->
+        toDetailScreenActivity.setOnClickListener(View.OnClickListener {
             val intent = Intent(this@FirstActivity, DetailScreenActivity::class.java)
             startActivity(intent)
         })

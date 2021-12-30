@@ -7,14 +7,14 @@ import androidx.appcompat.app.AppCompatActivity
 import ru.itmo.mobile2k21.R
 
 class CounterView(private val counterConfig: CounterConfig) : AppCompatActivity(), ICounterView {
-    override lateinit var presenter: ICounterPresenter
+    private lateinit var presenter: ICounterPresenter
     private lateinit var counterLabel: TextView
     private lateinit var slowDownButton: Button
     private lateinit var speedUpButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.counter_item)
+        presenter = CounterPresenter(this, counterConfig)
 
         counterLabel = findViewById(R.id.counter_label)
         slowDownButton = findViewById(R.id.counter_slow_down)
@@ -22,11 +22,21 @@ class CounterView(private val counterConfig: CounterConfig) : AppCompatActivity(
 
         slowDownButton.setOnClickListener { presenter.slowDown() }
         speedUpButton.setOnClickListener { presenter.speedUp() }
-
-        presenter = CounterPresenter(this, counterConfig)
     }
 
     override fun setLabelValue(value: Int) {
         counterLabel.text = value.toString()
+    }
+
+    override fun start() {
+        presenter.start()
+    }
+
+    override fun stop() {
+        presenter.stop()
+    }
+
+    override fun reset() {
+        presenter.stop()
     }
 }
