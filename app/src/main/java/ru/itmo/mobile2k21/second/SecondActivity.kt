@@ -2,8 +2,10 @@ package ru.itmo.mobile2k21.second
 
 import android.os.Bundle
 import android.widget.Button
+import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import ru.itmo.mobile2k21.R
 
 
@@ -49,24 +51,28 @@ class SecondActivity : AppCompatActivity() {
     }
 
     private fun initCounters() {
-        val fragmentManager: FragmentManager = supportFragmentManager
         val changeIntervalDeltaMs: Long = 50
 
         val firstCounterDelayMs: Long = 600
-        val firstCounterConfig = CounterConfig(
+        val firstCounterView: CounterView = CounterView.instance(
             firstCounterDelayMs,
             changeIntervalDeltaMs
         )
-        val firstCounterView: CounterView = fragmentManager.findFragmentById(R.id.first_counter) as CounterView
 
         val secondCounterDelayMs: Long = 400
-        val secondCounterConfig = CounterConfig(
+        val secondCounterView: CounterView = CounterView.instance(
             secondCounterDelayMs,
             changeIntervalDeltaMs
         )
-        val secondCounterView: CounterView = fragmentManager.findFragmentById(R.id.second_counter) as CounterView
-
         counterViews = listOf(firstCounterView, secondCounterView)
+
+        val counters: LinearLayout = findViewById(R.id.counters)
+
+        val fragmentManager: FragmentManager = supportFragmentManager
+        val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.add(counters.id, firstCounterView)
+        fragmentTransaction.add(counters.id, secondCounterView)
+        fragmentTransaction.commit()
     }
 
 

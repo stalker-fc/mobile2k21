@@ -9,9 +9,11 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import ru.itmo.mobile2k21.R
 
+
 class CounterView : Fragment(), ICounterView {
-    private val counterConfig: CounterConfig = CounterConfig(500, 50)
     private lateinit var presenter: ICounterPresenter
+    private var currentUpdateIntervalMs: Long = 0
+    private var changeIntervalDeltaMs: Long = 0
     private lateinit var counterLabel: TextView
     private lateinit var slowDownButton: Button
     private lateinit var speedUpButton: Button
@@ -21,12 +23,15 @@ class CounterView : Fragment(), ICounterView {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.counter_item, container, false)
+        return inflater.inflate(R.layout.counter_fragment, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        presenter = CounterPresenter(this, counterConfig)
+        currentUpdateIntervalMs = arguments?.getLong("currentUpdateIntervalMs") ?: 0
+        changeIntervalDeltaMs = arguments?.getLong("changeIntervalDeltaMs") ?: 0
+
+        presenter = CounterPresenter(this, currentUpdateIntervalMs, changeIntervalDeltaMs)
 
         counterLabel = view.findViewById(R.id.counter_label)
         slowDownButton = view.findViewById(R.id.counter_slow_down)
@@ -35,6 +40,18 @@ class CounterView : Fragment(), ICounterView {
         slowDownButton.setOnClickListener { presenter.slowDown() }
         speedUpButton.setOnClickListener { presenter.speedUp() }
     }
+
+    companion object {
+        fun instance(currentUpdateIntervalMs: Long, changeIntervalDeltaMs: Long): CounterView {
+            val data = Bundle()
+            data.putLong("currentUpdateIntervalMs", currentUpdateIntervalMs)
+            data.putLong("changeIntervalDeltaMs", changeIntervalDeltaMs)
+            return CounterView().apply {
+                arguments = data
+            }
+        }
+    }
+
 
     override fun setLabelValue(value: Int) {
         counterLabel.text = value.toString()
@@ -49,6 +66,6 @@ class CounterView : Fragment(), ICounterView {
     }
 
     override fun reset() {
-        presenter.stop()
+        presenter.reset()
     }
 }

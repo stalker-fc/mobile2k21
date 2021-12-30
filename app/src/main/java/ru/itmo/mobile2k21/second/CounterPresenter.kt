@@ -8,7 +8,8 @@ import kotlin.math.max
 
 class CounterPresenter(
     private val counterView: ICounterView,
-    private val counterConfig: CounterConfig
+    private var currentUpdateIntervalMs: Long,
+    private val changeIntervalDeltaMs: Long,
 ) : ICounterPresenter {
     private val mainHandler: Handler = Handler(Looper.getMainLooper())
 
@@ -21,7 +22,7 @@ class CounterPresenter(
             if (isRunning.get()) {
                 counterModel.value.getAndIncrement()
                 updateCounterLabel()
-                mainHandler.postDelayed(this, counterConfig.currentUpdateIntervalMs)
+                mainHandler.postDelayed(this, currentUpdateIntervalMs)
             }
         }
     }
@@ -46,13 +47,13 @@ class CounterPresenter(
     }
 
     override fun slowDown() {
-        counterConfig.currentUpdateIntervalMs += counterConfig.changeIntervalDeltaMs
+        currentUpdateIntervalMs += changeIntervalDeltaMs
     }
 
     override fun speedUp() {
-        counterConfig.currentUpdateIntervalMs = max(
-            this.counterConfig.currentUpdateIntervalMs - counterConfig.changeIntervalDeltaMs,
-            counterConfig.changeIntervalDeltaMs
+        this.currentUpdateIntervalMs = max(
+            this.currentUpdateIntervalMs - this.changeIntervalDeltaMs,
+            this.changeIntervalDeltaMs
         )
     }
 
