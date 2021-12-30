@@ -2,21 +2,19 @@ package ru.itmo.mobile2k21.second
 
 import android.os.Handler
 import android.os.Looper
-import android.widget.TextView
 import java.util.concurrent.atomic.AtomicBoolean
 import java.util.concurrent.atomic.AtomicInteger
 import kotlin.math.max
 
 class CounterPresenter(
+    private val counterView: ICounterView,
     private val counterConfig: CounterConfig
-) {
+) : ICounterPresenter {
     private val mainHandler: Handler = Handler(Looper.getMainLooper())
 
     private val counterModel: CounterModel = CounterModel(AtomicInteger(0))
 
     private val isRunning: AtomicBoolean = AtomicBoolean(false)
-
-    private val counterView: CounterView = CounterView()
 
     private val counterThread: Runnable = object : Runnable {
         override fun run() {
@@ -28,7 +26,7 @@ class CounterPresenter(
         }
     }
 
-    fun start() {
+    override fun start() {
         if (isRunning.get()) {
             return
         }
@@ -36,22 +34,22 @@ class CounterPresenter(
         mainHandler.post(counterThread)
     }
 
-    fun stop() {
+    override fun stop() {
         isRunning.set(false)
         mainHandler.removeCallbacks(counterThread)
     }
 
-    fun reset() {
+    override fun reset() {
         stop()
         counterModel.value.set(0)
         updateCounterLabel()
     }
 
-    fun slowDown() {
+    override fun slowDown() {
         counterConfig.currentUpdateIntervalMs += counterConfig.changeIntervalDeltaMs
     }
 
-    fun speedUp() {
+    override fun speedUp() {
         counterConfig.currentUpdateIntervalMs = max(
             this.counterConfig.currentUpdateIntervalMs - counterConfig.changeIntervalDeltaMs,
             counterConfig.changeIntervalDeltaMs
