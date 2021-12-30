@@ -4,37 +4,19 @@ import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.ListView
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import ru.itmo.mobile2k21.R
 
 
 class SecondActivity : AppCompatActivity() {
+    private lateinit var counterPresenters: List<ICounterPresenter>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_second)
 
-        val firstCounterId = 1
-        val firstCounterDelayMs: Long = 600
-        val firstCounterConfig = CounterConfig(
-            firstCounterId,
-            firstCounterDelayMs
-        )
-
-        val secondCounterId = 2
-        val secondCounterDelayMs: Long = 400
-        val secondCounterConfig = CounterConfig(
-            secondCounterId,
-            secondCounterDelayMs
-        )
-
-        val counterConfigs = mutableListOf(firstCounterConfig, secondCounterConfig)
-
-        val adapter = CounterAdapter(this, counterConfigs)
-
-        val countersListView: ListView = findViewById(R.id.counters_listview)
-        countersListView.adapter = adapter
+        initCounters()
 
         val countersStart: Button = findViewById(R.id.counters_start)
         enableButton(countersStart)
@@ -46,30 +28,56 @@ class SecondActivity : AppCompatActivity() {
         disableButton(countersReset)
 
         countersStart.setOnClickListener {
-            for (counter in counterAdapter.counters) counter.start()
+            for (counter in counterPresenters) counter.start()
             disableButton(countersStart)
             enableButton(countersStop)
             enableButton(countersReset)
         }
 
         countersStop.setOnClickListener {
-            for (counter in counterAdapter.counters) counter.stop()
+            for (counter in counterPresenters) counter.stop()
             enableButton(countersStart)
             disableButton(countersStop)
             enableButton(countersReset)
         }
 
         countersReset.setOnClickListener {
-            for (counter in counterAdapter.counters) counter.reset()
+            for (counter in counterPresenters) counter.reset()
             enableButton(countersStart)
             disableButton(countersStop)
             disableButton(countersReset)
         }
     }
 
+    private fun initCounters() {
+        val changeIntervalDeltaMs: Long = 50
+        val firstCounterDelayMs: Long = 600
+        val firstCounterConfig = CounterConfig(
+            firstCounterDelayMs,
+            changeIntervalDeltaMs
+        )
+        val firstCounterView = CounterView(firstCounterConfig)
+
+        val secondCounterDelayMs: Long = 400
+        val secondCounterConfig = CounterConfig(
+            secondCounterDelayMs,
+            changeIntervalDeltaMs
+        )
+        val secondCounterView = CounterView(secondCounterConfig)
+
+        val counterViews = listOf(firstCounterView, secondCounterView)
+        counterPresenters = listOf(firstCounterView.presenter, secondCounterView.presenter)
+
+        val adapter = ArrayAdapter(this, R.layout.counter_item, counterViews)
+
+        val countersListView: ListView = findViewById(R.id.counters_listview)
+        countersListView.adapter = adapter
+    }
+
+
     override fun onPause() {
         super.onPause()
-        for (counter in counterAdapter.counters) counter.reset()
+        for (counter in counterPresenters) counter.reset()
     }
 
     private fun enableButton(button: Button) {
@@ -81,14 +89,4 @@ class SecondActivity : AppCompatActivity() {
         button.isEnabled = false;
         button.setTextAppearance(R.style.secondTaskButton_disabled)
     }
-
-    private fun speedUp() {
-
-    }
-
-    private fun slowDown() {
-
-    }
-
-
 }
