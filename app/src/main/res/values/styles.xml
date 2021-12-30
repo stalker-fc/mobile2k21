@@ -30,6 +30,13 @@
         <item name="strokeColor">@color/light_grey</item>
     </style>
 
+    <style name="speedButton" parent="@style/secondTaskButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+    </style>
+
 
     <style name="Theme.Mobile2k21.NoActionBar">
         <item name="android:windowActionBar">false</item>

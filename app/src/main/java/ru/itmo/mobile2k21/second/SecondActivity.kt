@@ -32,7 +32,6 @@ class SecondActivity : AppCompatActivity() {
 
         counters = mutableListOf(firstCounter, secondCounter)
 
-
         val countersStart: Button = findViewById(R.id.counters_start)
         enableButton(countersStart)
 
@@ -75,4 +74,14 @@ class SecondActivity : AppCompatActivity() {
         button.isEnabled = false;
         button.setTextAppearance(R.style.secondTaskButton_disabled)
     }
+
+    private fun speedUp() {
+
+    }
+
+    private fun slowDown() {
+
+    }
+
+
 }

@@ -12,8 +12,9 @@ class Counter(
     val counterLabel: TextView,
     var updateIntervalMs: Long
 ) {
-    private val deltaMs: Long = 50
     private val mainHandler: Handler = Handler(Looper.getMainLooper())
+
+    private val deltaMs: Long = 50
     private val value: AtomicInteger = AtomicInteger(0)
     private val isRunning: AtomicBoolean = AtomicBoolean(false)
 
@@ -50,7 +51,7 @@ class Counter(
     }
 
     fun speedUp() {
-        updateIntervalMs = max(updateIntervalMs - deltaMs, deltaMs)
+        updateIntervalMs = max(this.updateIntervalMs - deltaMs, deltaMs)
     }
 
 
