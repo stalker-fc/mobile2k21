@@ -2,15 +2,17 @@ package ru.itmo.mobile2k21.second
 
 import android.os.Handler
 import android.os.Looper
+import android.widget.Button
 import android.widget.TextView
 import java.util.concurrent.atomic.AtomicBoolean
 import java.util.concurrent.atomic.AtomicInteger
 import kotlin.math.max
+import ru.itmo.mobile2k21.R
 
 
 class Counter(
-    val counterLabel: TextView,
-    var updateIntervalMs: Long
+    private val counterLabel: TextView,
+    private var updateIntervalMs: Long,
 ) {
     private val mainHandler: Handler = Handler(Looper.getMainLooper())
 
@@ -42,6 +44,7 @@ class Counter(
     }
 
     fun reset() {
+        stop()
         value.set(0)
         updateCounterLabel()
     }

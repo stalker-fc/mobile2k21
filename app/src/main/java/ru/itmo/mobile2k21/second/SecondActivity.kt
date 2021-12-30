@@ -1,36 +1,40 @@
 package ru.itmo.mobile2k21.second
 
 import android.os.Bundle
+import android.widget.ArrayAdapter
 import android.widget.Button
+import android.widget.ListView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import ru.itmo.mobile2k21.R
 
 
 class SecondActivity : AppCompatActivity() {
-    private lateinit var counters: List<Counter>
-
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_second)
 
-        val firstCounterLabel: TextView = findViewById(R.id.first_counter)
+        val firstCounterId = 1
         val firstCounterDelayMs: Long = 600
-        val firstCounter = Counter(
-            firstCounterLabel,
+        val firstCounterConfig = CounterConfig(
+            firstCounterId,
             firstCounterDelayMs
         )
 
-        val secondCounterLabel: TextView = findViewById(R.id.second_counter)
+        val secondCounterId = 2
         val secondCounterDelayMs: Long = 400
-        val secondCounter = Counter(
-            secondCounterLabel,
+        val secondCounterConfig = CounterConfig(
+            secondCounterId,
             secondCounterDelayMs
         )
 
-        counters = mutableListOf(firstCounter, secondCounter)
+        val counterConfigs = mutableListOf(firstCounterConfig, secondCounterConfig)
+
+        val adapter = CounterAdapter(this, counterConfigs)
+
+        val countersListView: ListView = findViewById(R.id.counters_listview)
+        countersListView.adapter = adapter
 
         val countersStart: Button = findViewById(R.id.counters_start)
         enableButton(countersStart)
@@ -42,27 +46,30 @@ class SecondActivity : AppCompatActivity() {
         disableButton(countersReset)
 
         countersStart.setOnClickListener {
-            for (counter in counters) counter.start()
+            for (counter in counterAdapter.counters) counter.start()
             disableButton(countersStart)
             enableButton(countersStop)
             enableButton(countersReset)
         }
 
         countersStop.setOnClickListener {
-            for (counter in counters) counter.stop()
+            for (counter in counterAdapter.counters) counter.stop()
             enableButton(countersStart)
             disableButton(countersStop)
             enableButton(countersReset)
         }
 
         countersReset.setOnClickListener {
-            for (counter in counters) counter.reset()
+            for (counter in counterAdapter.counters) counter.reset()
+            enableButton(countersStart)
+            disableButton(countersStop)
+            disableButton(countersReset)
         }
     }
 
     override fun onPause() {
         super.onPause()
-        for (counter in counters) counter.reset()
+        for (counter in counterAdapter.counters) counter.reset()
     }
 
     private fun enableButton(button: Button) {
