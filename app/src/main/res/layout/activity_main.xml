@@ -19,7 +19,7 @@
 
     <com.google.android.material.button.MaterialButton
         style="@style/mainScreenButton"
-        android:id="@+id/log_button"
+        android:id="@+id/to_third_task"
         android:layout_marginTop="20dp"
         android:text="@string/to_third_task_label"/>
 
