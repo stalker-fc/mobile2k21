@@ -1,12 +1,9 @@
 package ru.itmo.mobile2k21.first.details
 
-import android.content.res.Configuration
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import ru.itmo.mobile2k21.R
 import ru.itmo.mobile2k21.first.FieldNames
@@ -36,7 +33,6 @@ class DetailsActivity : AppCompatActivity() {
         val icon: ImageView = findViewById(R.id.detail_screen_icon)
         icon.setImageResource(getIconResource(info.icon))
 
-
         val naturalCounterButton: Button = findViewById(R.id.natural_counter_button)
         val naturalCounterLabel: TextView = findViewById(R.id.natural_counter_label)
         naturalCounterButton.setOnClickListener {
@@ -57,9 +53,16 @@ class DetailsActivity : AppCompatActivity() {
             val value = primeCounter.getNextValue()
             primeCounterLabel.text = value.toString()
         }
-        Log.i("LandScape", "Created")
-//       TODO: google restore instance state
-//        landscape layout
+
+        if (savedInstanceState != null) {
+            naturalCounter.setValue(savedInstanceState.getInt(FieldNames.naturalCounterValue))
+            fibonacciCounter.setValue(savedInstanceState.getInt(FieldNames.fibonacciCounterValue))
+            primeCounter.setValue(savedInstanceState.getInt(FieldNames.primeCounterValue))
+
+            naturalCounterLabel.text = naturalCounter.getValue().toString()
+            fibonacciCounterLabel.text = fibonacciCounter.getValue().toString()
+            primeCounterLabel.text = primeCounter.getValue().toString()
+        }
     }
 
 
@@ -72,45 +75,10 @@ class DetailsActivity : AppCompatActivity() {
         }
     }
 
-    override fun onConfigurationChanged(newConfig: Configuration) {
-        super.onConfigurationChanged(newConfig)
-        Log.i("LandScape", "Changed")
-        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            Toast.makeText(this, "landscape", Toast.LENGTH_SHORT).show()
-        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
-            Toast.makeText(this, "portrait", Toast.LENGTH_SHORT).show()
-        }
+    override fun onSaveInstanceState(savedInstanceState: Bundle) {
+        super.onSaveInstanceState(savedInstanceState)
+        savedInstanceState.putInt(FieldNames.naturalCounterValue, naturalCounter.getValue())
+        savedInstanceState.putInt(FieldNames.fibonacciCounterValue, fibonacciCounter.getValue())
+        savedInstanceState.putInt(FieldNames.primeCounterValue, primeCounter.getValue())
     }
-
-//    override fun onSaveInstanceState(savedInstanceState: Bundle) {
-//        super.onSaveInstanceState(savedInstanceState)
-//        // Save UI state changes to the savedInstanceState.
-//        // This bundle will be passed to onCreate if the process is
-//        // killed and restarted.
-//        savedInstanceState.putBoolean("MyBoolean", true)
-//        savedInstanceState.putDouble("myDouble", 1.9)
-//        savedInstanceState.putInt("MyInt", 1)
-//        savedInstanceState.putString("MyString", "Welcome back to Android")
-//        // etc.
-//    }
-//
-//    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
-//        super.onRestoreInstanceState(savedInstanceState)
-//        // Restore UI state from the savedInstanceState.
-//        // This bundle has also been passed to onCreate.
-//        val myBoolean = savedInstanceState.getBoolean("MyBoolean")
-//        val myDouble = savedInstanceState.getDouble("myDouble")
-//        val myInt = savedInstanceState.getInt("MyInt")
-//        val myString = savedInstanceState.getString("MyString")
-//    }
-//
-//    fun onViewStateRestored(@Nullable savedInstanceState: Bundle) {
-//        super.onViewStateRestored(savedInstanceState)
-//        // Restore UI state from the savedInstanceState.
-//        // This bundle has also been passed to onCreate.
-//        val myBoolean = savedInstanceState.getBoolean("MyBoolean")
-//        val myDouble = savedInstanceState.getDouble("myDouble")
-//        val myInt = savedInstanceState.getInt("MyInt")
-//        val myString = savedInstanceState.getString("MyString")
-//    }
 }

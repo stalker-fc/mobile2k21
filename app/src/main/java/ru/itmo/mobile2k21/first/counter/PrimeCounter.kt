@@ -1,7 +1,5 @@
 package ru.itmo.mobile2k21.first.counter
 
-import android.util.Log
-
 class PrimeCounter: ICounter {
     private var value: Int = 0
     override fun getNextValue(): Int {
@@ -18,6 +16,14 @@ class PrimeCounter: ICounter {
                 return value
             }
         }
+    }
+
+    override fun setValue(value: Int) {
+        this.value = value
+    }
+
+    override fun getValue(): Int {
+        return value
     }
 
     private fun isPrime(number: Int): Boolean {
