@@ -17,4 +17,7 @@
     <string name="show_list">Show List</string>
     <string name="change_color_text_label">Изменить цвет текста</string>
     <string name="colored_text_label">Цвет этого текста должен меняться</string>
+    <string name="natural_counter_button">NAT</string>
+    <string name="fibonacci_counter_button">FIB</string>
+    <string name="prime_counter_button">PRIME</string>
 </resources>

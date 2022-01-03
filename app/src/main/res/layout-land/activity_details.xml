@@ -9,6 +9,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -79,48 +80,40 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/detail_screen_guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="211dp" />
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/detail_screen_guideline">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="583dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/natural_counter_layout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="visible">
 
             <TextView
                 android:id="@+id/natural_counter_label"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="16dp"
                 android:gravity="center_horizontal"
                 android:text="@string/zero"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Button
                 android:id="@+id/natural_counter_button"
                 style="@style/detailScreenButton"
-                android:layout_marginTop="8dp"
+                android:layout_marginStart="16dp"
                 android:text="@string/natural_counter_button"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/natural_counter_label" />
+                app:layout_constraintStart_toEndOf="@id/natural_counter_label"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -129,19 +122,16 @@
             android:id="@+id/fibonacci_counter_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            app:layout_constraintEnd_toStartOf="@+id/prime_counter_layout"
-            app:layout_constraintStart_toEndOf="@+id/natural_counter_layout"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/natural_counter_layout">
 
             <TextView
                 android:id="@+id/fibonacci_counter_label"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginStart="44dp"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="16dp"
                 android:gravity="center"
                 android:text="@string/zero"
                 app:layout_constraintStart_toStartOf="parent"
@@ -150,10 +140,10 @@
             <Button
                 android:id="@+id/fibonacci_counter_button"
                 style="@style/detailScreenButton"
-                android:layout_marginTop="8dp"
+                android:layout_marginStart="16dp"
                 android:text="@string/fibonacci_counter_button"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/fibonacci_counter_label" />
+                app:layout_constraintStart_toEndOf="@id/fibonacci_counter_label"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -161,16 +151,16 @@
             android:id="@+id/prime_counter_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fibonacci_counter_layout">
 
             <TextView
                 android:id="@+id/prime_counter_label"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginStart="44dp"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="16dp"
                 android:gravity="center_horizontal"
                 android:text="@string/zero"
                 app:layout_constraintStart_toStartOf="parent"
@@ -179,10 +169,10 @@
             <Button
                 android:id="@+id/prime_counter_button"
                 style="@style/detailScreenButton"
-                android:layout_marginTop="8dp"
+                android:layout_marginStart="16dp"
                 android:text="@string/prime_counter_button"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/prime_counter_label" />
+                app:layout_constraintStart_toEndOf="@+id/prime_counter_label"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
