@@ -2,6 +2,6 @@ package ru.itmo.mobile2k21.first
 
 class FieldNames {
     companion object {
-        val detailScreenInfo = "detailScreenInfo"
+        const val detailScreenInfo = "detailScreenInfo"
     }
 }

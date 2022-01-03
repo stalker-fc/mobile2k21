@@ -10,8 +10,8 @@ import ru.itmo.mobile2k21.first.counter.FibonacciCounter
 import ru.itmo.mobile2k21.first.counter.NaturalCounter
 import ru.itmo.mobile2k21.first.counter.PrimeCounter
 
-class DetailScreenActivity : AppCompatActivity() {
-    private lateinit var info: DetailScreenInfo
+class DetailsActivity : AppCompatActivity() {
+    private lateinit var info: DetailsInfo
 
     private val naturalCounter: NaturalCounter = NaturalCounter()
     private val fibonacciCounter: FibonacciCounter = FibonacciCounter()
@@ -20,8 +20,8 @@ class DetailScreenActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_detail_screen)
-        info = intent.extras?.get(FieldNames.detailScreenInfo) as DetailScreenInfo
+        setContentView(R.layout.activity_details)
+        info = intent.extras?.get(FieldNames.detailScreenInfo) as DetailsInfo
 
         val title: TextView = findViewById(R.id.detail_screen_title)
         title.text = info.title
@@ -30,7 +30,7 @@ class DetailScreenActivity : AppCompatActivity() {
         description.text = info.description
 
         val icon: ImageView = findViewById(R.id.detail_screen_icon)
-        icon.setImageResource(getIcon(info.icon))
+        icon.setImageResource(getIconResource(info.icon))
 
 
         val naturalCounterButton: Button = findViewById(R.id.natural_counter_button)
@@ -59,12 +59,12 @@ class DetailScreenActivity : AppCompatActivity() {
     }
 
 
-    private fun getIcon(icon: DetailScreenIcon): Int {
+    private fun getIconResource(icon: DetailsIcon): Int {
         return when (icon) {
-            DetailScreenIcon.rocket -> R.drawable.ic_rocket
-            DetailScreenIcon.atom -> R.drawable.ic_atom
-            DetailScreenIcon.car -> R.drawable.ic_car
-            DetailScreenIcon.guy -> R.drawable.ic_guy
+            DetailsIcon.rocket -> R.drawable.ic_rocket
+            DetailsIcon.atom -> R.drawable.ic_atom
+            DetailsIcon.car -> R.drawable.ic_car
+            DetailsIcon.guy -> R.drawable.ic_guy
         }
     }
 

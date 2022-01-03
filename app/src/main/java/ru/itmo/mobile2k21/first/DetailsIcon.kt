@@ -1,6 +1,6 @@
 package ru.itmo.mobile2k21.first
 
-enum class DetailScreenIcon {
+enum class DetailsIcon {
     rocket,
     car,
     atom,
