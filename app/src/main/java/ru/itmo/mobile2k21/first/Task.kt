@@ -1,40 +1,59 @@
 package ru.itmo.mobile2k21.first
 
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.ListView
-import android.widget.Switch
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SwitchCompat
 import ru.itmo.mobile2k21.R
-import ru.itmo.mobile2k21.first.details.DetailsActivity
 import ru.itmo.mobile2k21.first.details.DetailsAdapter
 import ru.itmo.mobile2k21.first.details.DetailsIcon
 import ru.itmo.mobile2k21.first.details.DetailsInfo
-import java.io.Serializable
 
 class Task : AppCompatActivity() {
+    private var isListVisible: Boolean = true
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_first)
 
-        val coloredLabel: TextView = findViewById(R.id.first_task__text)
-        val changeLabelColorSwitch: Switch = findViewById(R.id.first_task__change_text_color)
+        val coloredLabel: TextView = findViewById(R.id.colored_text)
+        val changeLabelColorSwitch: SwitchCompat = findViewById(R.id.change_text_color_switch)
         changeLabelColorSwitch.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
-                coloredLabel.setTextColor(R.color.light_grey.toInt())
+                coloredLabel.setTextColor(getColor(R.color.light_grey))
             } else {
-                coloredLabel.setTextColor(R.color.dark_grey.toInt())
+                coloredLabel.setTextColor(getColor(R.color.dark_grey))
             }
+        }
+
+
+        val detailsListView: ListView = findViewById(R.id.details_list_view)
+        val listVisibilityButton: Button = findViewById(R.id.list_visibility_button)
+        listVisibilityButton.setOnClickListener {
+            isListVisible = !isListVisible
+            if (isListVisible) {
+                detailsListView.visibility = View.VISIBLE
+                listVisibilityButton.text = getString(R.string.hide_list)
+            } else {
+                detailsListView.visibility = View.INVISIBLE
+                listVisibilityButton.text = getString(R.string.show_list)
+            }
+
+        }
+
+        val toastButton: Button = findViewById(R.id.toast_button)
+        toastButton.setOnClickListener {
+            val duration = Toast.LENGTH_SHORT
+            val toast = Toast.makeText(applicationContext, R.string.toast_text, duration)
+            toast.show()
         }
 
         val detailsList = getDetailsList()
         val detailsAdapter = DetailsAdapter(this, detailsList)
-
-        val detailsListView: ListView = findViewById(R.id.details_list_view)
         detailsListView.adapter = detailsAdapter
     }
 

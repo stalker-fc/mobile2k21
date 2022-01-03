@@ -12,7 +12,7 @@
     </style>
 
     <style name="firstTaskButton" parent="@style/mainScreenButton">
-        <item name="android:layout_width">100dp</item>
+        <item name="android:layout_width">108dp</item>
         <item name="android:layout_height">50dp</item>
         <item name="android:layout_gravity">left</item>
     </style>
