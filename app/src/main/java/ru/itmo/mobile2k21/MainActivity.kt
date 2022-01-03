@@ -4,8 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import ru.itmo.mobile2k21.first.FirstActivity
-import ru.itmo.mobile2k21.second.view.TaskView as SecondTask
+import ru.itmo.mobile2k21.first.Task as FirstTask
+import ru.itmo.mobile2k21.second.task.TaskView as SecondTask
 import ru.itmo.mobile2k21.third.ThirdActivity
 
 class MainActivity : AppCompatActivity() {
@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
 
         val toFirstTaskButton: Button = findViewById(R.id.to_first_task)
         toFirstTaskButton.setOnClickListener {
-            val intent = Intent(this@MainActivity, FirstActivity::class.java)
+            val intent = Intent(this@MainActivity, FirstTask::class.java)
             startActivity(intent)
         }
 

@@ -1,4 +1,4 @@
-package ru.itmo.mobile2k21.second.presenter
+package ru.itmo.mobile2k21.second.counter
 
 import android.os.Handler
 import android.os.Looper

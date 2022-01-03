@@ -1,4 +1,4 @@
-package ru.itmo.mobile2k21.second.presenter
+package ru.itmo.mobile2k21.second.task
 
 import ru.itmo.mobile2k21.second.view.ICounterView
 

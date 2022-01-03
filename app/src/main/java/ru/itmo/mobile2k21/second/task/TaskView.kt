@@ -1,4 +1,4 @@
-package ru.itmo.mobile2k21.second.view
+package ru.itmo.mobile2k21.second.task
 
 import android.os.Bundle
 import android.widget.Button
@@ -7,8 +7,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import ru.itmo.mobile2k21.R
-import ru.itmo.mobile2k21.second.presenter.ITaskPresenter
-import ru.itmo.mobile2k21.second.presenter.TaskPresenter
+import ru.itmo.mobile2k21.second.counter.CounterView
+import ru.itmo.mobile2k21.second.task.ITaskPresenter
+import ru.itmo.mobile2k21.second.task.TaskPresenter
 
 
 class TaskView : AppCompatActivity(), ITaskView {

@@ -1,4 +1,4 @@
-package ru.itmo.mobile2k21.second.view
+package ru.itmo.mobile2k21.second.counter
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,8 +8,6 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import ru.itmo.mobile2k21.R
-import ru.itmo.mobile2k21.second.presenter.CounterPresenter
-import ru.itmo.mobile2k21.second.presenter.ICounterPresenter
 
 
 class CounterView : Fragment(), ICounterView {

@@ -1,4 +1,4 @@
-package ru.itmo.mobile2k21.second.view
+package ru.itmo.mobile2k21.second.counter
 
 interface ICounterView {
     fun setLabelValue(value: Int)

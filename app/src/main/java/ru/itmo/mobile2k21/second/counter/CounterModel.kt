@@ -1,4 +1,4 @@
-package ru.itmo.mobile2k21.second.model
+package ru.itmo.mobile2k21.second.counter
 
 import java.util.concurrent.atomic.AtomicInteger
 
