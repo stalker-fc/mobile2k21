@@ -1,8 +1,9 @@
 package ru.itmo.mobile2k21.first
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.annotation.Nullable
+import android.widget.Button
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import ru.itmo.mobile2k21.R
 import ru.itmo.mobile2k21.first.counter.FibonacciCounter
 import ru.itmo.mobile2k21.first.counter.NaturalCounter
@@ -19,6 +20,27 @@ class DetailScreenActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_screen)
+
+        val naturalCounterButton: Button = findViewById(R.id.natural_counter_button)
+        val naturalCounterLabel: TextView = findViewById(R.id.natural_counter_label)
+        naturalCounterButton.setOnClickListener {
+            val value = naturalCounter.getNextValue()
+            naturalCounterLabel.text = value.toString()
+        }
+
+        val fibonacciCounterButton: Button = findViewById(R.id.fibonacci_counter_button)
+        val fibonacciCounterLabel: TextView = findViewById(R.id.fibonacci_counter_label)
+        fibonacciCounterButton.setOnClickListener {
+            val value = fibonacciCounter.getNextValue()
+            fibonacciCounterLabel.text = value.toString()
+        }
+
+        val primeCounterButton: Button = findViewById(R.id.prime_counter_button)
+        val primeCounterLabel: TextView = findViewById(R.id.prime_counter_label)
+        primeCounterButton.setOnClickListener {
+            val value = primeCounter.getNextValue()
+            primeCounterLabel.text = value.toString()
+        }
 
 //       TODO: google restore instance state
 //        landscape layout

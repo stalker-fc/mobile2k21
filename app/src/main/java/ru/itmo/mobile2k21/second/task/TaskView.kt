@@ -32,7 +32,6 @@ class TaskView : AppCompatActivity(), ITaskView {
         disableStopButton()
         disableResetButton()
 
-
         countersStart.setOnClickListener {
             presenter.start()
         }

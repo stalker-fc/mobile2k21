@@ -1,24 +1,23 @@
 package ru.itmo.mobile2k21.first.counter
 
+import android.util.Log
+
 class PrimeCounter: ICounter {
     private var value: Int = 0
     override fun getNextValue(): Int {
-        if (value < 3) {
+        if (value < 2) {
             value = 2
             return value
         }
 
         var number: Int = value
-        var isPrimeFound = false
-        while (!isPrimeFound) {
+        while (true) {
             number += 1
             if (isPrime(number)) {
-                isPrimeFound = true
                 value = number
+                return value
             }
         }
-
-        return value
     }
 
     private fun isPrime(number: Int): Boolean {

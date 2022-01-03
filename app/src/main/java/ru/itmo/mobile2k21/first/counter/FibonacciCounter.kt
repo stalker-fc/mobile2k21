@@ -6,7 +6,7 @@ class FibonacciCounter: ICounter {
 
     override fun getNextValue(): Int {
         val result = currentValue
-        currentValue += currentValue
+        currentValue += previousValue
         previousValue = result
         return result
     }
