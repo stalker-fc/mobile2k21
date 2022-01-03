@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
-import android.widget.Button
+import androidx.core.content.ContextCompat.startActivity
 import ru.itmo.mobile2k21.R
 import ru.itmo.mobile2k21.first.FieldNames
 import java.io.Serializable
@@ -35,6 +35,12 @@ class DetailsAdapter(
         val vh: DetailsRowHolder
         if (convertView == null) {
             view = this.inflater.inflate(R.layout.row_details, parent, false)
+            val info = getItem(position)
+            view.setOnClickListener {
+                val intent = Intent(context, DetailsActivity::class.java)
+                intent.putExtra(FieldNames.detailScreenInfo, info as Serializable)
+                startActivity(context, intent, null)
+            }
             vh = DetailsRowHolder(view)
             view.tag = vh
         } else {
@@ -46,20 +52,5 @@ class DetailsAdapter(
         vh.description.text = details[position].description
         return view
     }
-
-//    private fun kek() {
-//        val toDetailScreenActivity: Button = findViewById(R.id.to_detail_screen)
-//        toDetailScreenActivity.setOnClickListener(View.OnClickListener {
-//            val intent = Intent(this@Task, DetailsActivity::class.java)
-//            val info = DetailsInfo(
-//                "Это подпись",
-//                "Это очень длинное текстовое описание",
-//                DetailsIcon.guy
-//            )
-//            intent.putExtra(FieldNames.detailScreenInfo, info as Serializable)
-//            startActivity(intent)
-//        })
-//
-//    }
 
 }
