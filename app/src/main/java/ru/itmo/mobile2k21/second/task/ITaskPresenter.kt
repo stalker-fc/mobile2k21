@@ -1,6 +1,6 @@
 package ru.itmo.mobile2k21.second.task
 
-import ru.itmo.mobile2k21.second.view.ICounterView
+import ru.itmo.mobile2k21.second.counter.ICounterView
 
 interface ITaskPresenter {
     fun addCounter(counter: ICounterView)

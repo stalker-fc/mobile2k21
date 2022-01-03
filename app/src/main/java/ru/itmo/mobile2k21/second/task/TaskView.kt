@@ -8,8 +8,6 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import ru.itmo.mobile2k21.R
 import ru.itmo.mobile2k21.second.counter.CounterView
-import ru.itmo.mobile2k21.second.task.ITaskPresenter
-import ru.itmo.mobile2k21.second.task.TaskPresenter
 
 
 class TaskView : AppCompatActivity(), ITaskView {

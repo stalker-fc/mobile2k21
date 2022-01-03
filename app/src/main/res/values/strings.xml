@@ -10,4 +10,5 @@
     <string name="up_arrow">▲</string>
     <string name="down_arrow">▼</string>
     <string name="load_cat_button">Load Cat</string>
+    <string name="counter_speed_text">Speed</string>
 </resources>

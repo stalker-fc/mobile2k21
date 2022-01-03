@@ -23,7 +23,7 @@ class CounterView : Fragment(), ICounterView {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.counter_fragment, container, false)
+        return inflater.inflate(R.layout.fragment_counter, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

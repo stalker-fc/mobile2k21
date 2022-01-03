@@ -1,7 +1,7 @@
 package ru.itmo.mobile2k21.second.task
 
-import ru.itmo.mobile2k21.second.view.ICounterView
-import ru.itmo.mobile2k21.second.view.ITaskView
+import ru.itmo.mobile2k21.second.counter.ICounterView
+import ru.itmo.mobile2k21.second.task.ITaskView
 
 class TaskPresenter(private val taskView: ITaskView) : ITaskPresenter {
     private var counterViews: MutableList<ICounterView> = mutableListOf()

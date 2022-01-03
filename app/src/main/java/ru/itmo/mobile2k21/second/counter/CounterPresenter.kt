@@ -2,9 +2,9 @@ package ru.itmo.mobile2k21.second.counter
 
 import android.os.Handler
 import android.os.Looper
-import ru.itmo.mobile2k21.second.model.CounterModel
-import ru.itmo.mobile2k21.second.presenter.ICounterPresenter
-import ru.itmo.mobile2k21.second.view.ICounterView
+import ru.itmo.mobile2k21.second.counter.CounterModel
+import ru.itmo.mobile2k21.second.counter.ICounterPresenter
+import ru.itmo.mobile2k21.second.counter.ICounterView
 import java.util.concurrent.atomic.AtomicBoolean
 import java.util.concurrent.atomic.AtomicInteger
 import kotlin.math.max

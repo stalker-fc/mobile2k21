@@ -113,6 +113,6 @@
         android:src="@drawable/ic_lightning"
         app:fabCustomSize="60dp"
         app:backgroundTint="@color/grey"
-        ></com.google.android.material.floatingactionbutton.FloatingActionButton>
+        />
 
 </FrameLayout>
