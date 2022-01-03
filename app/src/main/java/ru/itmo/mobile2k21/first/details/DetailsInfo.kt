@@ -1,4 +1,4 @@
-package ru.itmo.mobile2k21.first
+package ru.itmo.mobile2k21.first.details
 
 import java.io.Serializable
 

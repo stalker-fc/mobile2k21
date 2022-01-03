@@ -1,4 +1,4 @@
-package ru.itmo.mobile2k21.first
+package ru.itmo.mobile2k21.first.details
 
 import android.os.Bundle
 import android.widget.Button
@@ -6,6 +6,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import ru.itmo.mobile2k21.R
+import ru.itmo.mobile2k21.first.FieldNames
 import ru.itmo.mobile2k21.first.counter.FibonacciCounter
 import ru.itmo.mobile2k21.first.counter.NaturalCounter
 import ru.itmo.mobile2k21.first.counter.PrimeCounter

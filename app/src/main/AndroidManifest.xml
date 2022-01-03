@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Mobile2k21">
         <activity
-            android:name=".first.DetailsActivity"
+            android:name=".first.details.DetailsActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
