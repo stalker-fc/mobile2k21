@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:gravity="center"
     android:orientation="horizontal"
-    tools:context=".second.CounterView">
+    tools:context=".second.view.CounterView">
 
     <TextView
         android:id="@+id/counter_label"

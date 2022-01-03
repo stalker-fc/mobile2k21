@@ -1,7 +1,10 @@
-package ru.itmo.mobile2k21.second
+package ru.itmo.mobile2k21.second.presenter
 
 import android.os.Handler
 import android.os.Looper
+import ru.itmo.mobile2k21.second.model.CounterModel
+import ru.itmo.mobile2k21.second.presenter.ICounterPresenter
+import ru.itmo.mobile2k21.second.view.ICounterView
 import java.util.concurrent.atomic.AtomicBoolean
 import java.util.concurrent.atomic.AtomicInteger
 import kotlin.math.max

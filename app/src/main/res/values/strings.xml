@@ -9,4 +9,5 @@
     <string name="zero">0</string>
     <string name="up_arrow">▲</string>
     <string name="down_arrow">▼</string>
+    <string name="load_cat_button">Load Cat</string>
 </resources>

@@ -4,4 +4,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
+
+
+    <Button
+        android:id="@+id/counters_start"
+        style="@style/secondTaskButton"
+        android:text="@string/load_cat_button" />
+
 </LinearLayout>

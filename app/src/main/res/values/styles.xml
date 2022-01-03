@@ -17,8 +17,7 @@
         <item name="android:layout_gravity">left</item>
     </style>
 
-    <style name="detailScreenButton" parent="@style/firstTaskButton">
-    </style>
+    <style name="detailScreenButton" parent="@style/firstTaskButton" />
 
     <style name="secondTaskButton" parent="@style/firstTaskButton">
         <item name="android:layout_gravity">center_horizontal</item>
@@ -29,6 +28,8 @@
         <item name="android:textColor">@color/light_grey</item>
         <item name="strokeColor">@color/light_grey</item>
     </style>
+
+    <style name="thirdTaskButton" parent="@style/secondTaskButton" />
 
     <style name="speedButton" parent="@style/secondTaskButton">
         <item name="android:layout_width">wrap_content</item>

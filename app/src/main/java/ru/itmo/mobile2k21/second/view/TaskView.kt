@@ -1,4 +1,4 @@
-package ru.itmo.mobile2k21.second
+package ru.itmo.mobile2k21.second.view
 
 import android.os.Bundle
 import android.widget.Button
@@ -7,46 +7,43 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import ru.itmo.mobile2k21.R
+import ru.itmo.mobile2k21.second.presenter.ITaskPresenter
+import ru.itmo.mobile2k21.second.presenter.TaskPresenter
 
 
-class SecondActivity : AppCompatActivity() {
-    private lateinit var counterViews: List<ICounterView>
+class TaskView : AppCompatActivity(), ITaskView {
+    private lateinit var presenter: ITaskPresenter
+    private lateinit var countersStart: Button
+    private lateinit var countersStop: Button
+    private lateinit var countersReset: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setContentView(R.layout.activity_second)
+
+        presenter = TaskPresenter(this)
 
         initCounters()
 
-        val countersStart: Button = findViewById(R.id.counters_start)
-        enableButton(countersStart)
+        countersStart = findViewById(R.id.counters_start)
+        countersStop = findViewById(R.id.counters_stop)
+        countersReset = findViewById(R.id.counters_reset)
 
-        val countersStop: Button = findViewById(R.id.counters_stop)
-        disableButton(countersStop)
+        enableStartButton()
+        disableStopButton()
+        disableResetButton()
 
-        val countersReset: Button = findViewById(R.id.counters_reset)
-        disableButton(countersReset)
 
         countersStart.setOnClickListener {
-            for (counter in counterViews) counter.start()
-            disableButton(countersStart)
-            enableButton(countersStop)
-            enableButton(countersReset)
+            presenter.start()
         }
 
         countersStop.setOnClickListener {
-            for (counter in counterViews) counter.stop()
-            enableButton(countersStart)
-            disableButton(countersStop)
-            enableButton(countersReset)
+            presenter.stop()
         }
 
         countersReset.setOnClickListener {
-            for (counter in counterViews) counter.reset()
-            enableButton(countersStart)
-            disableButton(countersStop)
-            disableButton(countersReset)
+            presenter.reset()
         }
     }
 
@@ -58,13 +55,14 @@ class SecondActivity : AppCompatActivity() {
             firstCounterDelayMs,
             changeIntervalDeltaMs
         )
+        presenter.addCounter(firstCounterView)
 
         val secondCounterDelayMs: Long = 400
         val secondCounterView: CounterView = CounterView.instance(
             secondCounterDelayMs,
             changeIntervalDeltaMs
         )
-        counterViews = listOf(firstCounterView, secondCounterView)
+        presenter.addCounter(secondCounterView)
 
         val counters: LinearLayout = findViewById(R.id.counters)
 
@@ -75,10 +73,9 @@ class SecondActivity : AppCompatActivity() {
         fragmentTransaction.commit()
     }
 
-
     override fun onPause() {
         super.onPause()
-        for (counter in counterViews) counter.reset()
+        presenter.reset()
     }
 
     private fun enableButton(button: Button) {
@@ -89,5 +86,29 @@ class SecondActivity : AppCompatActivity() {
     private fun disableButton(button: Button) {
         button.isEnabled = false;
         button.setTextAppearance(R.style.secondTaskButton_disabled)
+    }
+
+    override fun enableStartButton() {
+        enableButton(countersStart)
+    }
+
+    override fun disableStartButton() {
+        disableButton(countersStart)
+    }
+
+    override fun enableStopButton() {
+        enableButton(countersStop)
+    }
+
+    override fun disableStopButton() {
+        disableButton(countersStop)
+    }
+
+    override fun enableResetButton() {
+        enableButton(countersReset)
+    }
+
+    override fun disableResetButton() {
+        disableButton(countersReset)
     }
 }

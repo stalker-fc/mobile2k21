@@ -1,4 +1,4 @@
-package ru.itmo.mobile2k21.second
+package ru.itmo.mobile2k21.second.presenter
 
 interface ICounterPresenter {
     fun start()

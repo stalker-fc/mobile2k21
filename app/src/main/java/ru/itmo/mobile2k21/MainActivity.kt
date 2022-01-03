@@ -2,11 +2,10 @@ package ru.itmo.mobile2k21
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import ru.itmo.mobile2k21.first.FirstActivity
-import ru.itmo.mobile2k21.second.SecondActivity
+import ru.itmo.mobile2k21.second.view.TaskView as SecondTask
 import ru.itmo.mobile2k21.third.ThirdActivity
 
 class MainActivity : AppCompatActivity() {
@@ -22,7 +21,7 @@ class MainActivity : AppCompatActivity() {
 
         val toSecondTaskButton: Button = findViewById(R.id.to_second_task)
         toSecondTaskButton.setOnClickListener {
-            val intent = Intent(this@MainActivity, SecondActivity::class.java)
+            val intent = Intent(this@MainActivity, SecondTask::class.java)
             startActivity(intent)
         }
 

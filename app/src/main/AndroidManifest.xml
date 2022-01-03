@@ -26,7 +26,7 @@
             android:name=".first.FirstActivity"
             android:exported="true" />
         <activity
-            android:name=".second.SecondActivity"
+            android:name=".second.view.TaskView"
             android:exported="true" />
     </application>
 
