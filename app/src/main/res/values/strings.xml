@@ -20,4 +20,6 @@
     <string name="natural_counter_button">NAT</string>
     <string name="fibonacci_counter_button">FIB</string>
     <string name="prime_counter_button">PRIME</string>
+    <string name="detail_screen_icon_text">detail_screen_icon</string>
+    <string name="details_image_text">details_image</string>
 </resources>

@@ -29,7 +29,8 @@
                 android:layout_height="150dp"
                 android:src="@drawable/halp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:contentDescription="@string/details_image_text" />
 
             <TextView
                 android:id="@+id/detail_screen_title"
@@ -38,7 +39,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="8dp"
                 android:gravity="center_horizontal"
-                android:text="Подпись к картинке"
+                android:text=""
                 app:layout_constraintTop_toBottomOf="@+id/details_image"
                 tools:layout_editor_absoluteX="9dp" />
 
@@ -59,7 +60,7 @@
                 android:layout_margin="20dp"
                 android:layout_marginTop="8dp"
                 android:gravity="center_horizontal"
-                android:text="Какое-то длинное текстовое описание"
+                android:text=""
                 android:textColor="@color/dark_grey"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -72,7 +73,8 @@
                 android:layout_height="30dp"
                 android:src="@color/dark_grey"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:contentDescription="@string/detail_screen_icon_text" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
