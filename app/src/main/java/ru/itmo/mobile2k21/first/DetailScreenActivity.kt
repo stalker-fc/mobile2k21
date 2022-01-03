@@ -2,6 +2,7 @@ package ru.itmo.mobile2k21.first
 
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import ru.itmo.mobile2k21.R
@@ -20,6 +21,17 @@ class DetailScreenActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_screen)
+        info = intent.extras?.get(FieldNames.detailScreenInfo) as DetailScreenInfo
+
+        val title: TextView = findViewById(R.id.detail_screen_title)
+        title.text = info.title
+
+        val description: TextView = findViewById(R.id.detail_screen_description)
+        description.text = info.description
+
+        val icon: ImageView = findViewById(R.id.detail_screen_icon)
+        icon.setImageResource(getIcon(info.icon))
+
 
         val naturalCounterButton: Button = findViewById(R.id.natural_counter_button)
         val naturalCounterLabel: TextView = findViewById(R.id.natural_counter_label)
@@ -44,6 +56,16 @@ class DetailScreenActivity : AppCompatActivity() {
 
 //       TODO: google restore instance state
 //        landscape layout
+    }
+
+
+    private fun getIcon(icon: DetailScreenIcon): Int {
+        return when (icon) {
+            DetailScreenIcon.rocket -> R.drawable.ic_rocket
+            DetailScreenIcon.atom -> R.drawable.ic_atom
+            DetailScreenIcon.car -> R.drawable.ic_car
+            DetailScreenIcon.guy -> R.drawable.ic_guy
+        }
     }
 
 //    override fun onSaveInstanceState(savedInstanceState: Bundle) {

@@ -25,11 +25,12 @@
                 android:src="@drawable/halp" />
 
             <TextView
+                android:id="@+id/detail_screen_title"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal"
                 android:gravity="center_horizontal"
-                android:text="Помогите" />
+                android:text="" />
 
         </LinearLayout>
         <LinearLayout
@@ -38,18 +39,20 @@
             android:orientation="vertical"
             android:layout_margin="10dp">
             <ImageView
+                android:id="@+id/detail_screen_icon"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:src="@drawable/ic_rocket" />
+                android:src="@color/dark_grey" />
 
             <TextView
+                android:id="@+id/detail_screen_description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_margin="20dp"
                 android:gravity="center_horizontal"
                 android:textColor="@color/dark_grey"
-                android:text="Здесь должно быть очень длинное текстовое описание" />
+                android:text="" />
 
         </LinearLayout>
     </LinearLayout>
