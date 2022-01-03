@@ -1,9 +1,12 @@
 package ru.itmo.mobile2k21.first.details
 
+import android.content.res.Configuration
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import ru.itmo.mobile2k21.R
 import ru.itmo.mobile2k21.first.FieldNames
@@ -54,7 +57,7 @@ class DetailsActivity : AppCompatActivity() {
             val value = primeCounter.getNextValue()
             primeCounterLabel.text = value.toString()
         }
-
+        Log.i("LandScape", "Created")
 //       TODO: google restore instance state
 //        landscape layout
     }
@@ -66,6 +69,16 @@ class DetailsActivity : AppCompatActivity() {
             DetailsIcon.atom -> R.drawable.ic_atom
             DetailsIcon.car -> R.drawable.ic_car
             DetailsIcon.guy -> R.drawable.ic_guy
+        }
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        Log.i("LandScape", "Changed")
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            Toast.makeText(this, "landscape", Toast.LENGTH_SHORT).show()
+        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
+            Toast.makeText(this, "portrait", Toast.LENGTH_SHORT).show()
         }
     }
 
