@@ -6,7 +6,7 @@ import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import ru.itmo.mobile2k21.first.Task as FirstTask
 import ru.itmo.mobile2k21.second.task.TaskView as SecondTask
-import ru.itmo.mobile2k21.third.ThirdActivity
+import ru.itmo.mobile2k21.third.Task as ThirdTask
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
 
         val toThirdTaskButton: Button = findViewById(R.id.to_third_task)
         toThirdTaskButton.setOnClickListener {
-            val intent = Intent(this@MainActivity, ThirdActivity::class.java)
+            val intent = Intent(this@MainActivity, ThirdTask::class.java)
             startActivity(intent)
         }
     }
