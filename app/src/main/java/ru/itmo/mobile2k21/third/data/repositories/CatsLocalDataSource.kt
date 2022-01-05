@@ -1,14 +1,18 @@
 package ru.itmo.mobile2k21.third.data.repositories
 
+import ru.itmo.mobile2k21.third.data.entities.CatEntity
+import ru.itmo.mobile2k21.third.data.mappers.CatsEntityMapper
 import ru.itmo.mobile2k21.third.domain.entities.Cat
 
-class CatsLocalDataSource: ICatsLocalDataSource {
+class CatsLocalDataSource(
+    private val catsEntityMapper: CatsEntityMapper
+): ICatsLocalDataSource {
     private var newCatIndex: Int = 0
-    private val catIdToCat: MutableMap<Int, Cat> = mutableMapOf()
+    private val catIdToCat: MutableMap<Int, CatEntity> = mutableMapOf()
     private val catIdToIndex: MutableMap<Int, Int> = mutableMapOf()
 
     override suspend fun add(cat: Cat) {
-        catIdToCat[cat.id] = cat
+        catIdToCat[cat.id] = catsEntityMapper.toCatEntity(cat)
         catIdToIndex[cat.id] = newCatIndex
         newCatIndex += 1
     }
@@ -23,6 +27,8 @@ class CatsLocalDataSource: ICatsLocalDataSource {
             .toList()
             .sortedBy { (_, value) -> value }
             .map { (key, _) -> key }
-        return orderedCatIds.map { catId -> catIdToCat[catId]!! }
+        return orderedCatIds
+            .map { catId -> catIdToCat[catId]!! }
+            .map { catEntity ->  catsEntityMapper.toCat(catEntity) }
     }
 }

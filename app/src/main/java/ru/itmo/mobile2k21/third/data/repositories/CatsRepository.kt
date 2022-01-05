@@ -9,7 +9,11 @@ class CatsRepository(
     private val remoteDataSource: ICatsRemoteDataSource
 ) : ICatsRepository {
     override suspend fun getRandomCat(): Result<Cat> {
-        return remoteDataSource.getRandomCat()
+        val catResult = remoteDataSource.getRandomCat()
+        if (catResult is Result.Success) {
+            localDataSource.add(cat = catResult.data)
+        }
+        return catResult
     }
 
     override suspend fun removeCat(cat: Cat) {
