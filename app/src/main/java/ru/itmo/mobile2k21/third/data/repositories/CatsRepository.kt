@@ -1,7 +1,8 @@
-package ru.itmo.mobile2k21.third.repositories
+package ru.itmo.mobile2k21.third.data.repositories
 
-import ru.itmo.mobile2k21.third.common.Result
-import ru.itmo.mobile2k21.third.entities.Cat
+import ru.itmo.mobile2k21.third.domain.common.Result
+import ru.itmo.mobile2k21.third.domain.entities.Cat
+import ru.itmo.mobile2k21.third.domain.repositories.ICatsRepository
 
 class CatsRepository(
     private val localDataSource: ICatsLocalDataSource,

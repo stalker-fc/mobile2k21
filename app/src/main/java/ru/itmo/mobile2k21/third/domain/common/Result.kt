@@ -1,4 +1,4 @@
-package ru.itmo.mobile2k21.third.common
+package ru.itmo.mobile2k21.third.domain.common
 
 sealed class Result<out R> {
 

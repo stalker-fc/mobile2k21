@@ -1,6 +1,6 @@
-package ru.itmo.mobile2k21.third.repositories
+package ru.itmo.mobile2k21.third.data.repositories
 
-import ru.itmo.mobile2k21.third.entities.Cat
+import ru.itmo.mobile2k21.third.domain.entities.Cat
 
 class CatsLocalDataSource: ICatsLocalDataSource {
     private var newCatIndex: Int = 0
