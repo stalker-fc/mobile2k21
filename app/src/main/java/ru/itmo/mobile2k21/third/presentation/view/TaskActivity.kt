@@ -1,6 +1,7 @@
 package ru.itmo.mobile2k21.third.presentation.view
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import ru.itmo.mobile2k21.R
 

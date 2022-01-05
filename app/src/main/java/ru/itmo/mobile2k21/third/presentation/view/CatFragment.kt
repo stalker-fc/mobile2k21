@@ -1,6 +1,7 @@
 package ru.itmo.mobile2k21.third.presentation.view
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,6 +25,7 @@ class CatFragment: Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Log.i("ThirdTask", "OnCreateCat")
     }
 
     override fun onCreateView(
@@ -31,6 +33,7 @@ class CatFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        Log.i("ThirdTask", "onCreateViewCat")
         return inflater.inflate(R.layout.fragment_cat, container, false)
     }
 
