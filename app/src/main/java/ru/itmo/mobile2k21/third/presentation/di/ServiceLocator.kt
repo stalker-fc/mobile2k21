@@ -1,12 +1,12 @@
 package ru.itmo.mobile2k21.third.presentation.di
 
 
-import android.content.Context
 import ru.itmo.mobile2k21.BuildConfig
 import ru.itmo.mobile2k21.third.data.api.CatsApi
 import ru.itmo.mobile2k21.third.data.mappers.CatsApiResponseMapper
 import ru.itmo.mobile2k21.third.data.mappers.CatsEntityMapper
 import ru.itmo.mobile2k21.third.data.repositories.*
+import ru.itmo.mobile2k21.third.domain.repositories.ICatsRepository
 
 object ServiceLocator {
     private val catsEntityMapper by lazy {
@@ -24,30 +24,30 @@ object ServiceLocator {
     @Volatile
     var catsRepository: CatsRepository? = null
 
-    fun provideCatsRepository(context: Context): CatsRepository {
+    fun provideCatsRepository(): ICatsRepository {
         // useful because this method can be accessed by multiple threads
         synchronized(this) {
-            return catsRepository ?: createCatsRepository(context)
+            return catsRepository ?: createCatsRepository()
         }
     }
 
-    private fun createCatsRepository(context: Context): CatsRepository {
+    private fun createCatsRepository(): ICatsRepository {
         val newRepo =
             CatsRepository(
-                createCatsLocalDataSource(context),
-                createCatsRemoteDataSource(context)
+                createCatsLocalDataSource(),
+                createCatsRemoteDataSource()
             )
         catsRepository = newRepo
         return newRepo
     }
 
-    private fun createCatsLocalDataSource(context: Context): ICatsLocalDataSource {
+    private fun createCatsLocalDataSource(): ICatsLocalDataSource {
         return CatsLocalDataSource(
             catsEntityMapper
         )
     }
 
-    private fun createCatsRemoteDataSource(context: Context): ICatsRemoteDataSource {
+    private fun createCatsRemoteDataSource(): ICatsRemoteDataSource {
         return CatsRemoteDataSource(
             catsApi,
             catsApiResponseMapper
