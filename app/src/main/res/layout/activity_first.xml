@@ -26,8 +26,7 @@
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:layout_marginLeft="2dp"
-                    android:layout_marginRight="2dp"
+                    android:layout_margin="20dp"
                     android:src="@drawable/red_rectangle" />
 
                 <ImageView
@@ -75,28 +74,27 @@
                     android:layout_height="wrap_content" />
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center_horizontal"
-                    android:gravity="center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
                     android:text="@string/change_color_text_label" />
             </LinearLayout>
 
             <LinearLayout
-                android:layout_margin="20dp"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_gravity="bottom">
+                android:layout_gravity="bottom"
+                android:layout_margin="20dp"
+                android:orientation="vertical">
 
                 <Button
-                    style="@style/firstTaskButton"
                     android:id="@+id/list_visibility_button"
+                    style="@style/firstTaskButton"
                     android:text="@string/hide_list" />
 
                 <Button
-                    style="@style/firstTaskButton"
                     android:id="@+id/toast_button"
+                    style="@style/firstTaskButton"
                     android:text="@string/toast" />
             </LinearLayout>
 
@@ -104,16 +102,17 @@
 
     </LinearLayout>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton android:id="@+id/fab_button"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/fab_button"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_gravity="end|bottom"
-        android:layout_marginRight="20dp"
+        android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
         android:src="@drawable/ic_lightning"
         app:fabCustomSize="60dp"
         app:backgroundTint="@color/grey"
-        />
+        android:contentDescription="@string/fab" />
 
 </FrameLayout>

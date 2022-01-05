@@ -22,4 +22,6 @@
     <string name="prime_counter_button">PRIME</string>
     <string name="detail_screen_icon_text">detail_screen_icon</string>
     <string name="details_image_text">details_image</string>
+    <string name="fab">FAB</string>
+    <string name="cats_cats_cats">cats cats cats</string>
 </resources>

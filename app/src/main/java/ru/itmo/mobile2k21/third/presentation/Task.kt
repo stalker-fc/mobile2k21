@@ -1,11 +1,11 @@
-package ru.itmo.mobile2k21.third
+package ru.itmo.mobile2k21.third.presentation
 
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import ru.itmo.mobile2k21.R
+import ru.itmo.mobile2k21.third.CatsClient
 
 class Task : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
