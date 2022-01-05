@@ -24,4 +24,5 @@
     <string name="details_image_text">details_image</string>
     <string name="fab">FAB</string>
     <string name="cats_cats_cats">cats cats cats</string>
+    <string name="error_occured_text">An error has occurred: %1$s</string>
 </resources>

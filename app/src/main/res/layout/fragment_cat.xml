@@ -3,17 +3,41 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
-    <ImageView
-        android:id="@+id/cat_image"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        app:srcCompat="@drawable/halp" />
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <TextView
+        android:layout_marginTop="30dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:text="@string/zero" />
+        android:text="@string/cats_cats_cats" />
+
+    <LinearLayout
+        android:layout_marginTop="15dp"
+        android:orientation="vertical"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/cat_image"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            app:srcCompat="@drawable/halp" />
+
+        <TextView
+            android:id="@+id/cat_id_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@string/zero" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/load_cat_button"
+        android:layout_marginTop="30dp"
+        style="@style/thirdTaskButton"
+        android:text="@string/load_cat_button" />
+
 </LinearLayout>

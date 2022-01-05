@@ -6,7 +6,7 @@ import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import ru.itmo.mobile2k21.first.Task as FirstTask
 import ru.itmo.mobile2k21.second.task.TaskView as SecondTask
-import ru.itmo.mobile2k21.third.presentation.Task as ThirdTask
+import ru.itmo.mobile2k21.third.presentation.view.TaskActivity as ThirdTask
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

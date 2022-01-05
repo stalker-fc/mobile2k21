@@ -34,7 +34,7 @@
         <activity
             android:name=".second.task.TaskView" />
         <activity
-            android:name=".third.presentation.Task" />
+            android:name=".third.presentation.view.TaskActivity" />
 
     </application>
 
