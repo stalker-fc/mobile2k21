@@ -25,7 +25,6 @@ class CatFragment: Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.i("ThirdTask", "OnCreateCat")
     }
 
     override fun onCreateView(
@@ -33,7 +32,6 @@ class CatFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        Log.i("ThirdTask", "onCreateViewCat")
         return inflater.inflate(R.layout.fragment_cat, container, false)
     }
 
