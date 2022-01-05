@@ -1,7 +1,6 @@
 package ru.itmo.mobile2k21.third.presentation.view
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +10,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.bumptech.glide.Glide
 import ru.itmo.mobile2k21.ItmoMobileApplication
 import ru.itmo.mobile2k21.R
 
@@ -46,6 +46,7 @@ class CatFragment: Fragment() {
         val catTitle: TextView = view.findViewById(R.id.cat_id_label)
         catViewModel.cat.observe(viewLifecycleOwner, { cat ->
             catTitle.text = cat.id.toString()
+            Glide.with(this).load(cat.imageUrl).into(catImage)
         })
 
         catViewModel.error.observe(viewLifecycleOwner, {
