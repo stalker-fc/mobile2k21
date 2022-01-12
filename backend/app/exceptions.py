@@ -1,8 +1,8 @@
-class NoSuchResourceException(Exception):
-    def __init__(self, resource_id: int):
-        self.resource_id = resource_id
-        super().__init__(resource_id)
+class NoSuchCatException(Exception):
+    def __init__(self, cat_id: int):
+        self.cat_id = cat_id
+        super().__init__(cat_id)
 
     def __str__(self):
-        return f"There is no resource with such id = `{self.resource_id}`"
+        return f"There is no cat with such id = `{self.cat_id}`"
 

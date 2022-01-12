@@ -27,5 +27,5 @@ def load_sticker_pack(sticker_pack_url: str, save_dir: Path):
 
 if __name__ == '__main__':
     sticker_pack_url = "https://tlgrm.ru/stickers/BrokenCats"
-    sticker_pack_directory = Path(__file__).parent.parent / "resources"
+    sticker_pack_directory = Path(__file__).parent.parent / "cats"
     load_sticker_pack(sticker_pack_url, sticker_pack_directory)
