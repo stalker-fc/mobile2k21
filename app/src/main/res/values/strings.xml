@@ -25,4 +25,6 @@
     <string name="fab">FAB</string>
     <string name="cats_cats_cats">cats cats cats</string>
     <string name="error_occured_text">An error has occurred: %1$s</string>
+    <string name="halp">halp</string>
+    <string name="detail_screen_icon">detail_screen_icon</string>
 </resources>
