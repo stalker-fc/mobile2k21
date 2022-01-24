@@ -52,7 +52,6 @@ class CounterView : Fragment(), ICounterView {
         }
     }
 
-
     override fun setLabelValue(value: Int) {
         counterLabel.text = value.toString()
     }

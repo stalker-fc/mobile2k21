@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import ru.itmo.mobile2k21.R
 import ru.itmo.mobile2k21.second.counter.CounterView
+import ru.itmo.mobile2k21.second.counter.ICounterView
 
 
 class TaskView : AppCompatActivity(), ITaskView {
@@ -15,6 +16,7 @@ class TaskView : AppCompatActivity(), ITaskView {
     private lateinit var countersStart: Button
     private lateinit var countersStop: Button
     private lateinit var countersReset: Button
+    private var counterViews: MutableList<ICounterView> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,15 +35,15 @@ class TaskView : AppCompatActivity(), ITaskView {
         disableResetButton()
 
         countersStart.setOnClickListener {
-            presenter.start()
+            presenter.onStartButtonPressed()
         }
 
         countersStop.setOnClickListener {
-            presenter.stop()
+            presenter.onStopButtonPressed()
         }
 
         countersReset.setOnClickListener {
-            presenter.reset()
+            presenter.onResetButtonPressed()
         }
     }
 
@@ -53,14 +55,14 @@ class TaskView : AppCompatActivity(), ITaskView {
             firstCounterDelayMs,
             changeIntervalDeltaMs
         )
-        presenter.addCounter(firstCounterView)
+        counterViews.add(firstCounterView)
 
         val secondCounterDelayMs: Long = 400
         val secondCounterView: CounterView = CounterView.instance(
             secondCounterDelayMs,
             changeIntervalDeltaMs
         )
-        presenter.addCounter(secondCounterView)
+        counterViews.add(secondCounterView)
 
         val counters: LinearLayout = findViewById(R.id.counters)
 
@@ -73,17 +75,29 @@ class TaskView : AppCompatActivity(), ITaskView {
 
     override fun onPause() {
         super.onPause()
-        presenter.reset()
+        presenter.onResetButtonPressed()
     }
 
     private fun enableButton(button: Button) {
-        button.isEnabled = true;
+        button.isEnabled = true
         button.setTextAppearance(R.style.secondTaskButton)
     }
 
     private fun disableButton(button: Button) {
-        button.isEnabled = false;
+        button.isEnabled = false
         button.setTextAppearance(R.style.secondTaskButton_disabled)
+    }
+
+    override fun startCounters() {
+        for (counter in counterViews) counter.start()
+    }
+
+    override fun stopCounters() {
+        for (counter in counterViews) counter.stop()
+    }
+
+    override fun resetCounters() {
+        for (counter in counterViews) counter.reset()
     }
 
     override fun enableStartButton() {
