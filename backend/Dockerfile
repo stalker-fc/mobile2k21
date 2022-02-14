@@ -19,4 +19,4 @@ COPY /app ./app
 
 COPY /resources ./resources
 
-ENTRYPOINT /bin/bash -c "gunicorn run_app:app --workers=${N_WORKERS} --bind 0.0.0.0:8080 --worker-class aiohttp.GunicornWebWorker --timeout 0"
+ENTRYPOINT /bin/bash -c "gunicorn main:app --workers=${N_WORKERS} --bind 0.0.0.0:8080 --worker-class aiohttp.GunicornWebWorker --timeout 0"
